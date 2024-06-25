@@ -1,8 +1,15 @@
+import { Ai } from '@cloudflare/ai';
 import { Hono } from 'hono';
 
-const app = new Hono();
+export type Env = {
+	AI: any;
+};
+
+const app = new Hono<{ Bindings: Env }>();
 
 app.get('/', (c) => {
+	const ai = new Ai(c.env.AI);
+
 	return c.json({ message: 'Hello, Tanay!' });
 });
 
