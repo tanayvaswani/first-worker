@@ -1,11 +1,11 @@
 import { Hono } from 'hono';
 
 export interface Env {
-	// MY_KV_NAMESPACE: KVNamespace;
-	// MY_DURABLE_OBJECT: DurableObjectNamespace;
-	// MY_BUCKET: R2Bucket;
-	// MY_SERVICE: Fetcher;
-	// MY_QUEUE: Queue;
+  // MY_KV_NAMESPACE: KVNamespace;
+  // MY_DURABLE_OBJECT: DurableObjectNamespace;
+  // MY_BUCKET: R2Bucket;
+  // MY_SERVICE: Fetcher;
+  // MY_QUEUE: Queue;
 }
 
 // Native CF stuff
@@ -30,7 +30,7 @@ export interface Env {
 const app = new Hono();
 
 app.get('/', (c) => {
-	return c.json({ message: 'Hello, Tanay!' });
+  return c.json({ message: 'Hello, Tanay!' });
 });
 
 export default app;
