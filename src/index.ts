@@ -1,16 +1,22 @@
 import { Ai } from '@cloudflare/ai';
 import { Hono } from 'hono';
 
-export type Env = {
-	AI: any;
+export type Bindings = {
+	AI: Ai | any;
 };
 
-const app = new Hono<{ Bindings: Env }>();
+const app = new Hono<{ Bindings: Bindings }>();
 
-app.get('/', (c) => {
+app.get('/', async (c) => {
 	const ai = new Ai(c.env.AI);
 
-	return c.json({ message: 'Hello, Tanay!' });
+	const inputs = {
+		prompt: 'Tell me a joke related to AI',
+	};
+
+	const res = await ai.run('@cf/mistral/mistral-7b-instruct-v0.1', inputs);
+
+	return c.json(res);
 });
 
 export default app;
