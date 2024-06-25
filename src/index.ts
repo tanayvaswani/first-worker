@@ -15,6 +15,10 @@ export default {
 		// make a db request
 
 		// return new Response('Hello, Tanay!');
-		return new Response(JSON.stringify({ message: 'Hello, Tanay!' }));
+		return new Response(JSON.stringify({ message: 'Hello, Tanay!' }), {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
 	},
 } satisfies ExportedHandler<Env>;
